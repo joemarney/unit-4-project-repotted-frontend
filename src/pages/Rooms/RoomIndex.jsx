@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import { index } from "../../services/room";
 
-export default function Home() {
+export default function RoomIndex({ user }) {
   const [rooms, setRooms] = useState([]);
 
   useEffect(() => {
@@ -22,10 +22,11 @@ export default function Home() {
 
   return (
     <main>
-      <h1>Home</h1>
+      <h1>Rooms</h1>
+      <p>Hi {user.username}</p>
       {rooms.map((room) => {
         return (
-          <Link key={room._id} to={`/${room._id}`}>
+          <Link key={room.name} to={`/${room._id}`}>
             <h2>{room.name}</h2>
           </Link>
         );

@@ -37,14 +37,17 @@ export default function SignUp({ setUser }) {
         <h1>Sign Up</h1>
         <div>
           <label htmlFor="username">Username:</label>
+          <br></br>
           <input type="text" name="username" placeholder="plantlover35" value={formData.username} onChange={handleChange} />
         </div>
         <div>
           <label htmlFor="email">Email:</label>
+          <br></br>
           <input type="text" name="email" placeholder="example@email.com" value={formData.email} onChange={handleChange} />
         </div>
         <div>
           <label htmlFor="password">Password:</label>
+          <br></br>
           <input type="text" name="password" value={formData.password} />
           <br></br>
           <input type="text" name="password_confirmation" value={formData.password_confirmation} onChange={handleChange} />

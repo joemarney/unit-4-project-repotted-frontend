@@ -1,23 +1,34 @@
 import { useState } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import SignUp from "./pages/SignUp/SignUp";
 import SignIn from "./pages/SignIn/SignIn";
-import Home from "./pages/Home/Home";
+import RoomIndex from "./pages/Rooms/RoomIndex";
+import NavBar from "./components/NavBar/NavBar";
+import PlantIndex from "./pages/Plants/PlantIndex";
 
 function App() {
   const [user, setUser] = useState("");
 
-  const navigate = useNavigate();
   return (
     <main>
-      <h1>Hello World</h1>
+      <NavBar setUser={setUser} user={user} />
+      {user ? (
+        <>
+          <h2>You are signed in</h2>
+        </>
+      ) : (
+        <>
+          <h2>You are not signed in</h2>
+        </>
+      )}
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/signup" element={<SignUp setUser={setUser} />} />
-        <Route path="/signin" element={<SignIn setUser={setUser} />} />
-        <Route path="/rooms" />
-        <Route path="/plants" />
+        <Route path="/" />
+        <Route path="/signup/" element={<SignUp setUser={setUser} />} />
+        <Route path="/signin/" element={<SignIn setUser={setUser} />} />
+        <Route path="/rooms/" element={<RoomIndex user={user} />} />
+        <Route path="/plants/" element={<PlantIndex />} />
+        <Route path="/about/" />
       </Routes>
     </main>
   );

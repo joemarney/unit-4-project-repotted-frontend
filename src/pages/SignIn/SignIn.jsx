@@ -4,7 +4,7 @@ import { signin } from "../../services/user";
 
 export default function SignIn({ setUser }) {
   const [formData, setFormData] = useState({
-    username: "",
+    username_or_email: "",
     password: "",
   });
 
@@ -33,11 +33,13 @@ export default function SignIn({ setUser }) {
       <h1>Sign In</h1>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="username">Username:</label>
-          <input type="text" name="username" value={formData.username} onChange={handleChange} />
+          <label htmlFor="username_or_email">Username or Email:</label>
+          <br></br>
+          <input type="text" name="username_or_email" placeholder="plantlover35/example@email.com" value={formData.username_or_email} onChange={handleChange} />
         </div>
         <div>
           <label htmlFor="password">Password:</label>
+          <br></br>
           <input type="text" name="password" value={formData.password} onChange={handleChange} />
         </div>
         {errors ? <p>{errors.errorMessage}</p> : null}

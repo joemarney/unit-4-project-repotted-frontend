@@ -1,6 +1,6 @@
-import axios from "./interceptor";
+import axios from "axios";
 
-const BASE_URL = `${import.meta.env.VITE_BACKEND_URL}/rooms/`;
+const BASE_URL = `${import.meta.env.VITE_BACKEND_URL}rooms/`;
 
 //* Create
 export function create(formData) {
