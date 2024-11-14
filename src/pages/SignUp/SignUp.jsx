@@ -48,9 +48,9 @@ export default function SignUp({ setUser }) {
         <div>
           <label htmlFor="password">Password:</label>
           <br></br>
-          <input type="text" name="password" value={formData.password} />
+          <input type="password" name="password" value={formData.password} onChange={handleChange} />
           <br></br>
-          <input type="text" name="password_confirmation" value={formData.password_confirmation} onChange={handleChange} />
+          <input type="password" name="password_confirmation" value={formData.password_confirmation} onChange={handleChange} />
         </div>
         <div>
           <label htmlFor="avatar">Avatar:</label>

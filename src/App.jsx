@@ -6,8 +6,9 @@ import SignIn from "./pages/SignIn/SignIn";
 import RoomIndex from "./pages/Rooms/RoomIndex";
 import NavBar from "./components/NavBar/NavBar";
 import PlantIndex from "./pages/Plants/PlantIndex";
+import About from "./pages/About/About";
 
-function App() {
+export default function App() {
   const [user, setUser] = useState("");
 
   return (
@@ -28,10 +29,8 @@ function App() {
         <Route path="/signin/" element={<SignIn setUser={setUser} />} />
         <Route path="/rooms/" element={<RoomIndex user={user} />} />
         <Route path="/plants/" element={<PlantIndex />} />
-        <Route path="/about/" />
+        <Route path="/about/" element={<About />} />
       </Routes>
     </main>
   );
 }
-
-export default App;

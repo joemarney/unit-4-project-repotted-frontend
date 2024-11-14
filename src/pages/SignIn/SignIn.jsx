@@ -40,7 +40,7 @@ export default function SignIn({ setUser }) {
         <div>
           <label htmlFor="password">Password:</label>
           <br></br>
-          <input type="text" name="password" value={formData.password} onChange={handleChange} />
+          <input type="password" name="password" value={formData.password} onChange={handleChange} />
         </div>
         {errors ? <p>{errors.errorMessage}</p> : null}
         <div>
