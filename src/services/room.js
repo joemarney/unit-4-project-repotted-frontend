@@ -1,15 +1,15 @@
 import axios from "axios";
 
-const BASE_URL = `${import.meta.env.VITE_BACKEND_URL}rooms/`;
+const BASE_URL = `${import.meta.env.VITE_BACKEND_URL}rooms`;
 
 //* Create
 export function create(formData) {
-  return axios.post(BASE_URL, formData);
+  return axios.post(`${BASE_URL}/`, formData);
 }
 
 //* Index
 export function index() {
-  return axios.get(BASE_URL);
+  return axios.get(`${BASE_URL}/`);
 }
 
 //* Show

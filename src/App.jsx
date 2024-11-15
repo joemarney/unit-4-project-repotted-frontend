@@ -7,6 +7,7 @@ import RoomIndex from "./pages/Rooms/RoomIndex";
 import NavBar from "./components/NavBar/NavBar";
 import PlantIndex from "./pages/Plants/PlantIndex";
 import About from "./pages/About/About";
+import PlantDetails from "./pages/Plants/PlantDetails";
 
 export default function App() {
   const [user, setUser] = useState("");
@@ -24,12 +25,22 @@ export default function App() {
         </>
       )}
       <Routes>
-        <Route path="/" />
-        <Route path="/signup/" element={<SignUp setUser={setUser} />} />
-        <Route path="/signin/" element={<SignIn setUser={setUser} />} />
-        <Route path="/rooms/" element={<RoomIndex user={user} />} />
-        <Route path="/plants/" element={<PlantIndex />} />
-        <Route path="/about/" element={<About />} />
+        {/* {user ? ( */}
+        <>
+          <Route path="/" />
+          <Route path="/about/" element={<About />} />
+          <Route path="/rooms/" element={<RoomIndex user={user} />} />
+          <Route path="/plants/" element={<PlantIndex />} />
+          <Route path="/plants/:plantId/" element={<PlantDetails />} />
+        </>
+        {/* ) : ( */}
+        <>
+          <Route path="/" />
+          <Route path="/about/" element={<About />} />
+          <Route path="/signup/" element={<SignUp setUser={setUser} />} />
+          <Route path="/signin/" element={<SignIn setUser={setUser} />} />
+        </>
+        {/* )} */}
       </Routes>
     </main>
   );

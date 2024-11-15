@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  h1 {
+    text-align: center;
+  }
+
+  img {
+    align-self: center;
+    height: 75%;
+    width: 75%;
+  }
+}
+
+.levels {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  div {
+    padding: 10px;
+    flex-direction: column;
+  }
+}

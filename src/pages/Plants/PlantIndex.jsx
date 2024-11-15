@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 
 import { index } from "../../services/plant";
 
+import styles from "./PlantIndex.module.scss";
+
 export default function PlantIndex() {
   const [plants, setPlants] = useState([]);
 
@@ -21,15 +23,22 @@ export default function PlantIndex() {
   // TODO loading screen
 
   return (
-    <main>
+    <>
       <h1>Plants</h1>
-      {plants.map((plant) => {
-        return (
-          <Link key={plant.name} to={`/${plant._id}`}>
-            <h2>{plant.name}</h2>
-          </Link>
-        );
-      })}
-    </main>
+      <main className={styles.container}>
+        <section>
+          {plants.map((plant) => {
+            return (
+              <article key={plant.id}>
+                <p>{plant.name}</p>
+                <Link to={`/plants/${plant.id}/`}>
+                  <img src={plant.image} />
+                </Link>
+              </article>
+            );
+          })}
+        </section>
+      </main>
+    </>
   );
 }

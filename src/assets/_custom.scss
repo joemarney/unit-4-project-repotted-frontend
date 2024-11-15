@@ -1,0 +1,13 @@
+$primary: #606c38;
+$nav-link-padding-y: 1rem;
+$navbar-padding-y: 0rem;
+
+.nav-link {
+  text-align: center;
+}
+
+// .navbar {
+//   padding: 0;
+// }
+
+@import "../node_modules/bootstrap/scss/bootstrap";
