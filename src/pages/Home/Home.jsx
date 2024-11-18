@@ -25,11 +25,11 @@ export default function Home({ user, rooms, setRooms }) {
           <img src={user.avatar} />
           <h1>Hey, {user.first_name}.</h1>
           <div>
-            <h1>Your rooms</h1>
+            <h2>Your rooms</h2>
             <Carousel rooms={rooms} />
           </div>
           <div>
-            <h1>Wishlist</h1>
+            <h2>Wishlist</h2>
           </div>
         </>
       ) : (

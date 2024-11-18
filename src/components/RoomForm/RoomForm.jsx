@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 
 import { show, create, update } from "../../services/room";
+
+import styles from "./RoomForm.module.scss";
 
 export default function RoomForm() {
   const [formData, setFormData] = useState({
@@ -47,25 +49,35 @@ export default function RoomForm() {
   }
 
   return (
-    <main>
+    <main className={styles.container}>
+      <h1>{roomId ? "Edit an existing room" : "Add a room"}</h1>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="name">What would you like to call the room?</label>
-        <br></br>
-        <input type="text" name="name" value={formData.name} onChange={handleChange} />
-        <label htmlFor="direction_facing">Which direction do your windows face?</label>
-        <br></br>
-        <select name="direction_facing" value={formData.direction_facing} onChange={handleChange}>
-          <option value="North">North</option>
-          <option value="East">East</option>
-          <option value="South">South</option>
-          <option value="West">West</option>
-        </select>
+        <div>
+          <label htmlFor="name">What would you like to call the room?</label>
+          <br></br>
+          <input type="text" name="name" placeholder="Bedroom" value={formData.name} onChange={handleChange} />
+        </div>
+        <div>
+          <label htmlFor="direction_facing">Which direction do your windows face?</label>
+          <br></br>
+          <select name="direction_facing" value={formData.direction_facing} onChange={handleChange}>
+            <option value="North">North</option>
+            <option value="East">East</option>
+            <option value="South">South</option>
+            <option value="West">West</option>
+          </select>
+        </div>
 
         {errors ? <p>{errors.errorMessage}</p> : null}
 
-        <button type="submit">
-          {roomId ? "Update" : "Create"} {formData.name}
-        </button>
+        <div id="button-container">
+          <button type="submit">
+            {roomId ? "Update" : "Create"} {formData.name}
+          </button>
+          <Link to="/rooms">
+            <button>Cancel</button>
+          </Link>
+        </div>
       </form>
     </main>
   );

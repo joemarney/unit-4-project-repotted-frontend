@@ -21,8 +21,6 @@ export default function App() {
 
   const [rooms, setRooms] = useState([]);
 
-  console.log(user);
-
   return (
     <main>
       <NavBar setUser={setUser} user={user} />

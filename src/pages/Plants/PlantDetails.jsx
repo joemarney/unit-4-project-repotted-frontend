@@ -5,7 +5,7 @@ import { show } from "../../services/plant";
 import styles from "./PlantDetails.module.scss";
 import Loading from "../../components/Loading/Loading";
 
-export default function PlantDetails() {
+export default function PlantDetails({ setWishlist }) {
   const [plant, setPlant] = useState({});
 
   const { plantId } = useParams();
