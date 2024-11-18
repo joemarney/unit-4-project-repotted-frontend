@@ -34,6 +34,9 @@ export default function NavBar({ setUser, user }) {
                 <Nav.Link as={Link} to="/plants/">
                   Plants
                 </Nav.Link>
+                <Nav.Link as={Link} to="/wishlist/">
+                  Wishlist
+                </Nav.Link>
                 <Nav.Link as={Link} to="/about/">
                   About
                 </Nav.Link>

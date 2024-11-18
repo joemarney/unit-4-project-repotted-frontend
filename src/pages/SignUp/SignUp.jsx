@@ -4,11 +4,14 @@ import { signup } from "../../services/user";
 
 export default function SignUp({ setUser }) {
   const [formData, setFormData] = useState({
+    first_name: "",
+    last_name: "",
     username: "",
     email: "",
     password: "",
     password_confirmation: "",
     avatar: "https://placehold.co/60x60",
+    dependents: "no",
   });
 
   const { errors, setErrors } = useState({});
@@ -36,6 +39,16 @@ export default function SignUp({ setUser }) {
       <form onSubmit={handleSubmit}>
         <h1>Sign Up</h1>
         <div>
+          <label htmlFor="first_name">Forename:</label>
+          <br></br>
+          <input type="text" name="first_name" placeholder="John" value={formData.first_name} onChange={handleChange} />
+        </div>
+        <div>
+          <label htmlFor="last_name">Surname:</label>
+          <br></br>
+          <input type="text" name="last_name" placeholder="Smith" value={formData.last_name} onChange={handleChange} />
+        </div>
+        <div>
           <label htmlFor="username">Username:</label>
           <br></br>
           <input type="text" name="username" placeholder="plantlover35" value={formData.username} onChange={handleChange} />
@@ -54,6 +67,17 @@ export default function SignUp({ setUser }) {
         </div>
         <div>
           <label htmlFor="avatar">Avatar:</label>
+          (// todo image upload)
+        </div>
+        <div>
+          <label htmlFor="dependents">Dependents:</label>
+          <br></br>
+          <select name="dependents" value={formData.dependents} onChange={handleChange}>
+            <option value="no">No</option>
+            <option value="pet">Pet(s)</option>
+            <option value="child">Child(ren)</option>
+            <option value="both">Both</option>
+          </select>
         </div>
         {errors ? <p>{errors.errorMessage}</p> : null}
         <div>

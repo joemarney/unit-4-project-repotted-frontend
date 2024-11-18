@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "./interceptors";
 
 const BASE_URL = `${import.meta.env.VITE_BACKEND_URL}rooms`;
 
@@ -14,15 +14,15 @@ export function index() {
 
 //* Show
 export function show(roomId) {
-  return axios.get(`${BASE_URL}/${roomId}`);
+  return axios.get(`${BASE_URL}/${roomId}/`);
 }
 
 //* Update
 export function update(roomId, formData) {
-  return axios.put(`${BASE_URL}/${roomId}`, formData);
+  return axios.put(`${BASE_URL}/${roomId}/`, formData);
 }
 
 //* Delete
 export function remove(roomId) {
-  return axios.delete(`${BASE_URL}/${roomId}`);
+  return axios.delete(`${BASE_URL}/${roomId}/`);
 }

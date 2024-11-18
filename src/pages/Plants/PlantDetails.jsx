@@ -3,6 +3,7 @@ import { useState, useEffect, useCallback } from "react";
 import { show } from "../../services/plant";
 
 import styles from "./PlantDetails.module.scss";
+import Loading from "../../components/Loading/Loading";
 
 export default function PlantDetails() {
   const [plant, setPlant] = useState({});
@@ -22,7 +23,7 @@ export default function PlantDetails() {
     fetchPlant();
   }, [plantId, fetchPlant]);
 
-  //TODO loading screen
+  if (!plant) return <Loading />;
 
   return (
     <main className={styles.container}>
@@ -34,19 +35,19 @@ export default function PlantDetails() {
       <p>{plant.description}</p>
       <div className={styles.levels}>
         <div>
-          <h3>Sunlight</h3>
+          <h4>Sunlight</h4>
           <p>{plant.sunlight}</p>
         </div>
         <div>
-          <h3>Watering</h3>
+          <h4>Watering</h4>
           <p>{plant.watering}</p>
         </div>
         <div>
-          <h3>Difficulty</h3>
+          <h4>Difficulty</h4>
           <p>{plant.difficulty}</p>
         </div>
         <div>
-          <h3>Toxicity</h3>
+          <h4>Toxicity</h4>
           <p>{plant.toxicity}</p>
         </div>
       </div>

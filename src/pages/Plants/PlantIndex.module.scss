@@ -40,18 +40,24 @@
 
 @media only screen and (min-width: 700px) {
   .container {
-    grid-template-columns: repeat(2, 1fr);
+    section {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 }
 
 @media only screen and (min-width: 1100px) {
   .container {
-    grid-template-columns: repeat(3, 1fr);
+    section {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
 }
 
 @media only screen and (min-width: 1400px) {
   .container {
-    grid-template-columns: repeat(4, 1fr);
+    section {
+      grid-template-columns: repeat(4, 1fr);
+    }
   }
 }

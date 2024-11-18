@@ -4,10 +4,9 @@ import { Link } from "react-router-dom";
 import { index } from "../../services/plant";
 
 import styles from "./PlantIndex.module.scss";
+import Loading from "../../components/Loading/Loading";
 
-export default function PlantIndex() {
-  const [plants, setPlants] = useState([]);
-
+export default function PlantIndex({ plants, setPlants }) {
   useEffect(() => {
     async function fetchPlants() {
       try {
@@ -20,7 +19,7 @@ export default function PlantIndex() {
     fetchPlants();
   }, [setPlants]);
 
-  // TODO loading screen
+  if (!plants) return <Loading />;
 
   return (
     <>
