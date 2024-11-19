@@ -14,10 +14,8 @@ export default function RoomIndex({ user, rooms, setRooms }) {
         console.log(error.response.data);
       }
     }
-    fetchRooms();
-  }, [setRooms]);
-
-  console.log(rooms);
+    if (user) fetchRooms();
+  }, []);
 
   if (!rooms) return <Loading />;
 

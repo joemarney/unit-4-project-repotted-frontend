@@ -34,16 +34,21 @@ export default function RoomDetails({ user }) {
 
   if (!room) return <Loading />;
 
-  console.log(room);
+  console.log("room -->", room);
+  console.log("room.plants -->", room.plants);
 
   return (
     <main>
       <h1>{room.name}</h1>
       <h3>{room.direction_facing}</h3>
-      <p>PLANTS</p>
+      {room.plants.map((plant) => {
+        return <p key={plant.id}>{plant.name}</p>;
+      })}
       {room.owner.id === user.id && (
         <>
-          <Link to={`/rooms/${roomId}/edit/`}>Edit</Link>
+          <Link to={`/rooms/${roomId}/edit/`}>
+            <button>Edit</button>
+          </Link>
           <button onClick={handleDelete}>Delete</button>
         </>
       )}

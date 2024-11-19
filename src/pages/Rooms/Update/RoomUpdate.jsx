@@ -1,9 +1,9 @@
 import RoomForm from "../../../components/RoomForm/RoomForm";
 
-export default function RoomUpdate() {
+export default function RoomUpdate({ plants }) {
   return (
     <main>
-      <RoomForm />
+      <RoomForm plants={plants} />
     </main>
   );
 }

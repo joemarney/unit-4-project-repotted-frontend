@@ -15,15 +15,15 @@ export default function Carousel({ rooms }) {
     setActiveIdx((previous) => (previous === 0 ? rooms.length - 1 : previous - 1));
   }
 
-  if (!rooms) return <Loading />;
+  if (rooms.length === 0) return <Loading />;
   return (
     <div className={styles.container}>
       <button onClick={prevSlide}>
         <em></em>
       </button>
-      <div>
-        <Link to={`/rooms/${rooms[activeIdx].id}/`}>{rooms[activeIdx].name}</Link>
-      </div>
+      <Link to={`/rooms/${rooms[activeIdx].id}/`}>
+        <div>{rooms[activeIdx].name}</div>
+      </Link>
       <button onClick={nextSlide}>
         <i></i>
       </button>

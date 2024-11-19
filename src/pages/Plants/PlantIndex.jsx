@@ -1,26 +1,10 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
-
-import { index } from "../../services/plant";
 
 import styles from "./PlantIndex.module.scss";
 import Loading from "../../components/Loading/Loading";
 
-export default function PlantIndex({ plants, setPlants }) {
-  useEffect(() => {
-    async function fetchPlants() {
-      try {
-        const { data } = await index();
-        setPlants(data);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    fetchPlants();
-  }, [setPlants]);
-
+export default function PlantIndex({ plants }) {
   if (!plants) return <Loading />;
-
   return (
     <>
       <h1>Plants</h1>

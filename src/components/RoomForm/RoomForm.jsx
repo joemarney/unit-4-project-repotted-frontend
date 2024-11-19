@@ -5,10 +5,11 @@ import { show, create, update } from "../../services/room";
 
 import styles from "./RoomForm.module.scss";
 
-export default function RoomForm() {
+export default function RoomForm({ plants }) {
   const [formData, setFormData] = useState({
     name: "",
     direction_facing: "North",
+    plants: [],
   });
 
   const [errors, setErrors] = useState({});
@@ -20,6 +21,9 @@ export default function RoomForm() {
     async function fetchRoom() {
       try {
         const { data } = await show(roomId);
+        console.log(data);
+        data.owner = data.owner.id;
+        data.plants = data.plants.id;
         setFormData(data);
       } catch (error) {
         console.log(error);
@@ -29,19 +33,20 @@ export default function RoomForm() {
   }, [roomId]);
 
   function handleChange(e) {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, type, checked, value } = e.target;
+    setFormData({ ...formData, [name]: type === "checkbox" ? checked : value });
   }
 
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      let form;
+      let res;
       if (roomId) {
-        form = await update(roomId, formData);
+        res = await update(roomId, formData);
       } else {
-        form = await create(formData);
+        res = await create(formData);
       }
-      navigate(`/rooms/${form.data._id}`);
+      navigate(`/rooms/${res.data.id}`);
     } catch (error) {
       console.log(error.response.data);
       setErrors(error.response.data);
@@ -50,7 +55,7 @@ export default function RoomForm() {
 
   return (
     <main className={styles.container}>
-      <h1>{roomId ? "Edit an existing room" : "Add a room"}</h1>
+      <h1>{roomId ? "Edit or add plants" : "Add a room"}</h1>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="name">What would you like to call the room?</label>
@@ -67,6 +72,21 @@ export default function RoomForm() {
             <option value="West">West</option>
           </select>
         </div>
+
+        {roomId && (
+          <div>
+            {plants.map((plant) => {
+              return (
+                <>
+                  <label key={plant.id} htmlFor="plants">
+                    {plant.name}
+                    <input type="checkbox" name="plants" onChange={handleChange} checked={formData.plants} />
+                  </label>
+                </>
+              );
+            })}
+          </div>
+        )}
 
         {errors ? <p>{errors.errorMessage}</p> : null}
 

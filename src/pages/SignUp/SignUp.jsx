@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { signup } from "../../services/user";
 
+import ImageUpload from "../../components/ImageUpload/ImageUpload";
+
 export default function SignUp({ setUser }) {
   const [formData, setFormData] = useState({
     first_name: "",
@@ -10,13 +12,15 @@ export default function SignUp({ setUser }) {
     email: "",
     password: "",
     password_confirmation: "",
-    avatar: "https://placehold.co/60x60",
+    images: "https://placehold.co/60x60",
     dependents: "no",
   });
 
-  const { errors, setErrors } = useState({});
+  const [errors, setErrors] = useState({});
 
   const navigate = useNavigate();
+
+  const [imageUp, setImageUp] = useState(false);
 
   function handleChange(e) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -67,7 +71,7 @@ export default function SignUp({ setUser }) {
         </div>
         <div>
           <label htmlFor="avatar">Avatar:</label>
-          (// todo image upload)
+          <ImageUpload setFormData={setFormData} formData={formData} setImageUp={setImageUp} fieldName="images" />
         </div>
         <div>
           <label htmlFor="dependents">Dependents:</label>
@@ -81,7 +85,9 @@ export default function SignUp({ setUser }) {
         </div>
         {errors ? <p>{errors.errorMessage}</p> : null}
         <div>
-          <button type="submit">Register</button>
+          <button type="submit" disabled={imageUp}>
+            Register
+          </button>
           <Link to="/">
             <button>Cancel</button>
           </Link>

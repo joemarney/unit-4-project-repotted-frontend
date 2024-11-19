@@ -1,5 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
+
+import { getUser } from "./utilities/auth";
+
+import { index } from "./services/plant";
 
 import SignUp from "./pages/SignUp/SignUp";
 import SignIn from "./pages/SignIn/SignIn";
@@ -15,11 +19,23 @@ import Home from "./pages/Home/Home";
 import Wishlist from "./pages/Wishlist/Wishlist";
 
 export default function App() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(getUser());
 
   const [plants, setPlants] = useState([]);
 
   const [rooms, setRooms] = useState([]);
+
+  useEffect(() => {
+    async function fetchPlants() {
+      try {
+        const { data } = await index();
+        setPlants(data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchPlants();
+  }, []);
 
   return (
     <main>
@@ -34,26 +50,26 @@ export default function App() {
         </>
       )}
       <Routes>
-        {/* {user ? ( */}
-        <>
-          <Route path="/" element={<Home user={user} rooms={rooms} setRooms={setRooms} />} />
-          <Route path="/about/" element={<About />} />
-          <Route path="/plants/" element={<PlantIndex plants={plants} setPlants={setPlants} />} />
-          <Route path="/plants/:plantId/" element={<PlantDetails />} />
-          <Route path="/rooms/" element={<RoomIndex user={user} rooms={rooms} setRooms={setRooms} />} />
-          <Route path="/rooms/:roomId/" element={<RoomDetails user={user} />} />
-          <Route path="/rooms/new" element={<RoomCreate />} />
-          <Route path="/rooms/:roomId/edit" element={<RoomUpdate />} />
-          <Route path="/wishlist/" element={<Wishlist />} />
-        </>
-        {/* ) : ( */}
-        <>
-          <Route path="/" />
-          <Route path="/about/" element={<About />} />
-          <Route path="/signup/" element={<SignUp setUser={setUser} />} />
-          <Route path="/signin/" element={<SignIn setUser={setUser} />} />
-        </>
-        {/* )} */}
+        {user ? (
+          <>
+            <Route path="/" element={<Home user={user} rooms={rooms} setRooms={setRooms} />} />
+            <Route path="/about/" element={<About />} />
+            <Route path="/plants/" element={<PlantIndex plants={plants} setPlants={setPlants} />} />
+            <Route path="/plants/:plantId/" element={<PlantDetails />} />
+            <Route path="/rooms/" element={<RoomIndex user={user} rooms={rooms} setRooms={setRooms} />} />
+            <Route path="/rooms/:roomId/" element={<RoomDetails user={user} plants={plants} />} />
+            <Route path="/rooms/new" element={<RoomCreate />} />
+            <Route path="/rooms/:roomId/edit" element={<RoomUpdate plants={plants} />} />
+            <Route path="/wishlist/" element={<Wishlist />} />
+          </>
+        ) : (
+          <>
+            <Route path="/" element={<Home />} />
+            <Route path="/about/" element={<About />} />
+            <Route path="/signup/" element={<SignUp setUser={setUser} />} />
+            <Route path="/signin/" element={<SignIn setUser={setUser} />} />
+          </>
+        )}
       </Routes>
     </main>
   );

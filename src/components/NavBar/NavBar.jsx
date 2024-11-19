@@ -13,7 +13,7 @@ export default function NavBar({ setUser, user }) {
   function handleSignOut() {
     removeToken();
     setUser(null);
-    navigate("/");
+    navigate("/signin");
   }
 
   return (

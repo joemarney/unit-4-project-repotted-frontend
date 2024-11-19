@@ -15,8 +15,8 @@ export default function Home({ user, rooms, setRooms }) {
         console.log(error.response.data);
       }
     }
-    fetchRooms();
-  }, [setRooms]);
+    if (user) fetchRooms();
+  }, []);
 
   return (
     <main className={styles.container}>
