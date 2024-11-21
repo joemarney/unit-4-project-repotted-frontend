@@ -16,7 +16,6 @@ import RoomCreate from "./pages/Rooms/Create/RoomCreate";
 import RoomUpdate from "./pages/Rooms/Update/RoomUpdate";
 import RoomDetails from "./pages/Rooms/Read/RoomDetails";
 import Home from "./pages/Home/Home";
-import Wishlist from "./pages/Wishlist/Wishlist";
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -24,6 +23,8 @@ export default function App() {
   const [plants, setPlants] = useState([]);
 
   const [rooms, setRooms] = useState([]);
+
+  const [wishlist, setWishlist] = useState([]);
 
   useEffect(() => {
     async function fetchPlants() {
@@ -40,34 +41,24 @@ export default function App() {
   return (
     <main>
       <NavBar setUser={setUser} user={user} />
-      {user ? (
-        <>
-          <h6>You are signed in</h6>
-        </>
-      ) : (
-        <>
-          <h6>You are not signed in</h6>
-        </>
-      )}
       <Routes>
         {user ? (
           <>
-            <Route path="/" element={<Home user={user} rooms={rooms} setRooms={setRooms} />} />
-            <Route path="/about/" element={<About />} />
-            <Route path="/plants/" element={<PlantIndex plants={plants} setPlants={setPlants} />} />
-            <Route path="/plants/:plantId/" element={<PlantDetails />} />
-            <Route path="/rooms/" element={<RoomIndex user={user} rooms={rooms} setRooms={setRooms} />} />
-            <Route path="/rooms/:roomId/" element={<RoomDetails user={user} plants={plants} />} />
+            <Route path="/" element={<Home user={user} rooms={rooms} setRooms={setRooms} wishlist={wishlist} setWishlist={setWishlist} />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/plants" element={<PlantIndex plants={plants} setPlants={setPlants} />} />
+            <Route path="/plants/:plantId" element={<PlantDetails wishlist={wishlist} setWishlist={setWishlist} />} />
+            <Route path="/rooms" element={<RoomIndex user={user} rooms={rooms} setRooms={setRooms} />} />
+            <Route path="/rooms/:roomId" element={<RoomDetails user={user} plants={plants} />} />
             <Route path="/rooms/new" element={<RoomCreate />} />
             <Route path="/rooms/:roomId/edit" element={<RoomUpdate plants={plants} />} />
-            <Route path="/wishlist/" element={<Wishlist />} />
           </>
         ) : (
           <>
             <Route path="/" element={<Home />} />
-            <Route path="/about/" element={<About />} />
-            <Route path="/signup/" element={<SignUp setUser={setUser} />} />
-            <Route path="/signin/" element={<SignIn setUser={setUser} />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/signup" element={<SignUp setUser={setUser} />} />
+            <Route path="/signin" element={<SignIn setUser={setUser} />} />
           </>
         )}
       </Routes>

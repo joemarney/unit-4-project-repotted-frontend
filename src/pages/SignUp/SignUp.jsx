@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { signup } from "../../services/user";
 
+import styles from "./SignUp.module.scss";
+
 import ImageUpload from "../../components/ImageUpload/ImageUpload";
 
 export default function SignUp({ setUser }) {
@@ -12,7 +14,7 @@ export default function SignUp({ setUser }) {
     email: "",
     password: "",
     password_confirmation: "",
-    images: "https://placehold.co/60x60",
+    avatar: "",
     dependents: "no",
   });
 
@@ -39,7 +41,7 @@ export default function SignUp({ setUser }) {
   }
 
   return (
-    <main>
+    <main className={styles.container}>
       <form onSubmit={handleSubmit}>
         <h1>Sign Up</h1>
         <div>
@@ -66,12 +68,13 @@ export default function SignUp({ setUser }) {
           <label htmlFor="password">Password:</label>
           <br></br>
           <input type="password" name="password" value={formData.password} onChange={handleChange} />
+          <label htmlFor="password_confirmation">Confirm:</label>
           <br></br>
           <input type="password" name="password_confirmation" value={formData.password_confirmation} onChange={handleChange} />
         </div>
         <div>
           <label htmlFor="avatar">Avatar:</label>
-          <ImageUpload setFormData={setFormData} formData={formData} setImageUp={setImageUp} fieldName="images" />
+          <ImageUpload setFormData={setFormData} formData={formData} setImageUp={setImageUp} fieldName="avatar" />
         </div>
         <div>
           <label htmlFor="dependents">Dependents:</label>
@@ -84,7 +87,7 @@ export default function SignUp({ setUser }) {
           </select>
         </div>
         {errors ? <p>{errors.errorMessage}</p> : null}
-        <div>
+        <div id="button-container">
           <button type="submit" disabled={imageUp}>
             Register
           </button>

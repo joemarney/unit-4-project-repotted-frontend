@@ -21,23 +21,22 @@ export default function NavBar({ setUser, user }) {
       {user ? (
         <Navbar expand="lg" className="bg-body-tertiary1" fixed="top" bg="primary">
           <Container>
-            <Navbar.Brand>REPOTTED.</Navbar.Brand>
+            <Navbar.Brand>
+              <h1>Repotted.</h1>
+            </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
                 <Nav.Link as={Link} to="/">
                   Home
                 </Nav.Link>
-                <Nav.Link as={Link} to="/rooms/">
+                <Nav.Link as={Link} to="/rooms">
                   Rooms
                 </Nav.Link>
-                <Nav.Link as={Link} to="/plants/">
+                <Nav.Link as={Link} to="/plants">
                   Plants
                 </Nav.Link>
-                <Nav.Link as={Link} to="/wishlist/">
-                  Wishlist
-                </Nav.Link>
-                <Nav.Link as={Link} to="/about/">
+                <Nav.Link as={Link} to="/about">
                   About
                 </Nav.Link>
                 <Nav.Link onClick={handleSignOut}>Sign Out</Nav.Link>
@@ -48,21 +47,23 @@ export default function NavBar({ setUser, user }) {
       ) : (
         <Navbar expand="lg" className="bg-body-tertiary1" fixed="top" bg="primary">
           <Container>
-            <Navbar.Brand>REPOTTED.</Navbar.Brand>
+            <Navbar.Brand>
+              <h1>Repotted.</h1>
+            </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
                 <Nav.Link as={Link} to="/">
                   Home
                 </Nav.Link>
-                <Nav.Link as={Link} to="/about/">
+                <Nav.Link as={Link} to="/about">
                   About
                 </Nav.Link>
                 <NavDropdown title="User" id="basic-nav-dropdown">
-                  <NavDropdown.Item as={Link} to="/signin/">
+                  <NavDropdown.Item as={Link} to="/signin">
                     Sign In
                   </NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to="/signup/">
+                  <NavDropdown.Item as={Link} to="/signup">
                     Sign Up
                   </NavDropdown.Item>
                 </NavDropdown>

@@ -7,14 +7,16 @@ export default function PlantIndex({ plants }) {
   if (!plants) return <Loading />;
   return (
     <>
-      <h1>Plants</h1>
+      <header>
+        <h1>Plants</h1>
+      </header>
       <main className={styles.container}>
         <section>
           {plants.map((plant) => {
             return (
               <article key={plant.id}>
-                <p>{plant.name}</p>
-                <Link to={`/plants/${plant.id}/`}>
+                <h1>{plant.name}</h1>
+                <Link to={`/plants/${plant.id}`}>
                   <img src={plant.image} />
                 </Link>
               </article>

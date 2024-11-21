@@ -1,3 +1,11 @@
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 10px;
+}
+
 .container {
   display: flex;
   justify-content: center;
@@ -19,13 +27,12 @@
     justify-content: center;
     align-items: center;
 
-    h1 {
+    p {
       position: absolute;
       //   backdrop-filter: blur(2px) saturate(100%);
       //   border-radius: 15px 15px 0 0;
-      // text-shadow: 0 0 0.3em white;
+      text-shadow: 0 0 0.3em white;
       // color: #fefae0;
-      // visibility: hidden;
     }
 
     img {

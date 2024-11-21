@@ -10,6 +10,7 @@ export default function RoomForm({ plants }) {
     name: "",
     direction_facing: "North",
     plants: [],
+    image: "https://res.cloudinary.com/dwdvdwwzv/image/upload/v1732104541/livingroom.avif",
   });
 
   const [errors, setErrors] = useState({});
@@ -21,9 +22,8 @@ export default function RoomForm({ plants }) {
     async function fetchRoom() {
       try {
         const { data } = await show(roomId);
-        console.log(data);
         data.owner = data.owner.id;
-        data.plants = data.plants.id;
+        data.plants = data.plants.map((plant) => plant.id);
         setFormData(data);
       } catch (error) {
         console.log(error);
@@ -34,7 +34,14 @@ export default function RoomForm({ plants }) {
 
   function handleChange(e) {
     const { name, type, checked, value } = e.target;
-    setFormData({ ...formData, [name]: type === "checkbox" ? checked : value });
+
+    if (name === "plants") {
+      const plantId = parseInt(value, 10);
+      const updatedContents = checked ? [...formData.plants, plantId] : formData.plants.filter((id) => id !== plantId);
+      setFormData({ ...formData, plants: updatedContents });
+    } else {
+      setFormData({ ...formData, [name]: type === "checkbox" ? checked : value });
+    }
   }
 
   async function handleSubmit(e) {
@@ -73,16 +80,26 @@ export default function RoomForm({ plants }) {
           </select>
         </div>
 
+        <div>
+          <label htmlFor="image">What type of room is it?</label>
+          <br></br>
+          <select name="image" value={formData.image} onChange={handleChange}>
+            <option value="https://res.cloudinary.com/dwdvdwwzv/image/upload/v1732104541/livingroom.avif">Living Room</option>
+            <option value="https://res.cloudinary.com/dwdvdwwzv/image/upload/v1732104542/bedroom.avif">Bedroom</option>
+            <option value="https://res.cloudinary.com/dwdvdwwzv/image/upload/v1732104542/bathroom.avif">Bathroom</option>
+            <option value="https://res.cloudinary.com/dwdvdwwzv/image/upload/v1732104543/kitchen.avif">Kitchen</option>
+            <option value="https://res.cloudinary.com/dwdvdwwzv/image/upload/v1732104544/diningroom.avif">Dining Room</option>
+          </select>
+        </div>
+
         {roomId && (
-          <div>
+          <div id="checkbox-wrapper">
             {plants.map((plant) => {
               return (
-                <>
-                  <label key={plant.id} htmlFor="plants">
-                    {plant.name}
-                    <input type="checkbox" name="plants" onChange={handleChange} checked={formData.plants} />
-                  </label>
-                </>
+                <div key={plant.id}>
+                  <label htmlFor="plants">{plant.name}</label>
+                  <input type="checkbox" name="plants" value={plant.id} onChange={handleChange} checked={formData.plants.includes(plant.id)} />
+                </div>
               );
             })}
           </div>

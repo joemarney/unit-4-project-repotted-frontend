@@ -1,31 +1,25 @@
 import { imageUpload } from "../../services/imageUpload";
 
-export default function ImageUpload(props) {
+export default function ImageUpload({ formData, setFormData, fieldName, setImageUp }) {
   async function handleImage(e) {
-    props.setImageUp(true);
+    setImageUp(true);
+    const file = e.target.files[0];
     try {
-      const files = e.target.files;
-
-      const images = [];
-
-      for (let file of files) {
-        const { data } = await imageUpload(file);
-
-        images.push(data.secure_url);
-      }
-      props.setFormData({ ...props.formData, [props.fieldName]: images });
-      props.setImageUp(false);
+      const { data } = await imageUpload(file);
+      const imageURL = data.secure_url;
+      setFormData({ ...formData, [fieldName]: imageURL });
+      setImageUp(false);
     } catch (error) {
       console.log(error);
+    } finally {
+      setImageUp(false);
     }
   }
 
   return (
     <main>
-      {/* {props.formData.images.map((image) => {
-        return <img key={image} src={image} />;
-      })} */}
-      <input type="file" name="image" multiple onChange={handleImage} />
+      {formData.avatar && <img src={formData.avatar} />}
+      <input type="file" name={fieldName} multiple onChange={handleImage} />
     </main>
   );
 }

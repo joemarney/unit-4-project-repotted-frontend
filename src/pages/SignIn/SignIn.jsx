@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { signin } from "../../services/user";
 
+import styles from "./SignIn.module.scss";
+
 export default function SignIn({ setUser }) {
   const [formData, setFormData] = useState({
     username_or_email: "",
@@ -21,7 +23,7 @@ export default function SignIn({ setUser }) {
     try {
       const { user } = await signin(formData);
       setUser(user);
-      navigate("/");
+      navigate("/rooms");
     } catch (error) {
       console.log(error);
       setErrors(error);
@@ -29,9 +31,9 @@ export default function SignIn({ setUser }) {
   }
 
   return (
-    <main>
-      <h1>Sign In</h1>
+    <main className={styles.container}>
       <form onSubmit={handleSubmit}>
+        <h1>Sign In</h1>
         <div>
           <label htmlFor="username_or_email">Username or Email:</label>
           <br></br>
@@ -43,7 +45,7 @@ export default function SignIn({ setUser }) {
           <input type="password" name="password" value={formData.password} onChange={handleChange} />
         </div>
         {errors ? <p>{errors.errorMessage}</p> : null}
-        <div>
+        <div id="button-container">
           <button type="submit">Sign in</button>
           <Link to="/">
             <button>Cancel</button>

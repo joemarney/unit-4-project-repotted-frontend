@@ -11,9 +11,32 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 200px;
-    width: 75%;
+    height: 220px;
+    width: fit-content;
     border: 2px solid black;
+    border-radius: 15px;
+    overflow: hidden;
+    img {
+      height: 100%;
+      width: 100%;
+    }
+
+    h1 {
+      position: absolute;
+      // text-shadow: 0 0 0.3em white;
+      // -webkit-text-stroke-width: 0.5px;
+      // -webkit-text-stroke-color: antiquewhite;
+      visibility: hidden;
+    }
+  }
+  a:hover {
+    img {
+      visibility: hidden;
+    }
+    h1 {
+      position: absolute;
+      visibility: visible;
+    }
   }
 }
 i,

@@ -1,0 +1,40 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  form {
+    border: 2px solid black;
+    border-radius: 15px;
+    padding: 20px;
+    margin-top: 30px;
+    width: 90%;
+
+    label {
+      margin: 10px 0px;
+    }
+
+    input {
+      width: 100%;
+      margin: 1px;
+    }
+
+    #button-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+    button {
+      width: 50%;
+    }
+    a {
+      button {
+        width: 30%;
+        float: inline-end;
+      }
+    }
+  }
+}
