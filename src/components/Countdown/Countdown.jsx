@@ -7,8 +7,6 @@ export default function Countdown({ plant }) {
   const [seconds, setSeconds] = useState(0);
   const [isRunning, setIsRunning] = useState(null);
 
-  console.log(plant.watering);
-
   function setState() {
     if (plant.watering === "low") {
       return 14;

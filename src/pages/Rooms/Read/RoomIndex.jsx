@@ -35,10 +35,12 @@ export default function RoomIndex({ user, rooms, setRooms }) {
         <section>
           {rooms.map((room) => {
             return (
-              <article key={room.id}>
-                <p>{room.name}</p>
+              <article className={styles.roomCard} key={room.id}>
                 <Link to={`/rooms/${room.id}`}>
-                  <img src={room.image} />
+                  <div>
+                    <h1>{room.name}</h1>
+                    <img src={room.image} />
+                  </div>
                 </Link>
               </article>
             );

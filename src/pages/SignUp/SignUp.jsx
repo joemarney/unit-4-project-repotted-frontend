@@ -5,6 +5,7 @@ import { signup } from "../../services/user";
 import styles from "./SignUp.module.scss";
 
 import ImageUpload from "../../components/ImageUpload/ImageUpload";
+import { getUser } from "../../utilities/auth";
 
 export default function SignUp({ setUser }) {
   const [formData, setFormData] = useState({
@@ -31,8 +32,8 @@ export default function SignUp({ setUser }) {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      const { user } = await signup(formData);
-      setUser(user);
+      await signup(formData);
+      setUser(getUser());
       navigate("/");
     } catch (error) {
       console.log(error);
@@ -73,8 +74,10 @@ export default function SignUp({ setUser }) {
           <input type="password" name="password_confirmation" value={formData.password_confirmation} onChange={handleChange} />
         </div>
         <div>
-          <label htmlFor="avatar">Avatar:</label>
-          <ImageUpload setFormData={setFormData} formData={formData} setImageUp={setImageUp} fieldName="avatar" />
+          <label htmlFor="avatar">
+            Avatar:
+            <ImageUpload setFormData={setFormData} formData={formData} setImageUp={setImageUp} fieldName="avatar" />
+          </label>
         </div>
         <div>
           <label htmlFor="dependents">Dependents:</label>

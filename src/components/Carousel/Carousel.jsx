@@ -28,16 +28,24 @@ export default function Carousel({ items, itemType }) {
         <em></em>
       </button>
       {itemType === "rooms" && (
-        <Link to={`/${itemType}/${items[activeIdx].id}/`}>
-          <img src={items[activeIdx].image} alt={items[activeIdx].name} />
-          <h1>{items[activeIdx].name}</h1>
-        </Link>
+        <article className={styles.card}>
+          <Link to={`/${itemType}/${items[activeIdx].id}/`}>
+            <div>
+              <h1>{items[activeIdx].name}</h1>
+              <img src={items[activeIdx].image} alt={items[activeIdx].name} />
+            </div>
+          </Link>
+        </article>
       )}
       {itemType === "plants" && (
-        <Link to={`/${itemType}/${items[activeIdx].plant_details.id}/`}>
-          <img src={items[activeIdx].plant_details.image} alt={items[activeIdx].plant_details.name} />
-          <h1>{items[activeIdx].plant_details.name}</h1>
-        </Link>
+        <article className={styles.card}>
+          <Link to={`/${itemType}/${items[activeIdx].plant_details.id}/`}>
+            <div>
+              <h1>{items[activeIdx].plant_details.name}</h1>
+              <img src={items[activeIdx].plant_details.image} alt={items[activeIdx].plant_details.name} />
+            </div>
+          </Link>
+        </article>
       )}
       <button onClick={nextSlide}>
         <i></i>

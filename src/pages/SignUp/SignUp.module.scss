@@ -6,19 +6,25 @@
   height: 100%;
   width: 100%;
   form {
-    border: 2px solid black;
+    // border: 2px solid #19220f;
     border-radius: 15px;
     padding: 20px;
     margin-top: 30px;
     width: 90%;
+    background-color: #7e8e48;
 
     label {
       margin: 10px 0px;
     }
 
-    input {
+    input,
+    select {
       width: 100%;
       margin: 1px;
+      background-color: #d2dab9;
+      border: none;
+      border-radius: 5px;
+      padding: 5px;
     }
 
     #button-container {

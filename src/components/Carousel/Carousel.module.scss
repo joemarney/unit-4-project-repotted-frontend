@@ -7,38 +7,70 @@
     background: transparent;
     border: none;
   }
-  a {
+  .card {
+    max-width: 400px;
+    max-height: 200px;
+    border-radius: 10px;
+    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 220px;
-    width: fit-content;
-    border: 2px solid black;
-    border-radius: 15px;
-    overflow: hidden;
+    position: relative;
+
+    a {
+      display: block;
+      position: relative;
+      text-decoration: none;
+      color: inherit;
+      overflow: hidden;
+    }
+
+    div {
+      position: relative;
+    }
+
     img {
-      height: 100%;
       width: 100%;
+      display: block;
+      transition: transform 0.3s ease;
     }
 
     h1 {
       position: absolute;
-      // text-shadow: 0 0 0.3em white;
-      // -webkit-text-stroke-width: 0.5px;
-      // -webkit-text-stroke-color: antiquewhite;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      transition: opacity 0.8s ease, visibility 0.8s ease;
+      z-index: 2;
       visibility: hidden;
     }
-  }
-  a:hover {
-    img {
-      visibility: hidden;
-    }
-    h1 {
+
+    a:before {
+      content: "";
       position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(25, 34, 15, 0.5);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 1;
+    }
+
+    a:hover h1 {
+      opacity: 1;
       visibility: visible;
+      color: #d2dab9;
+    }
+
+    a:hover:before {
+      opacity: 1;
     }
   }
 }
+
 i,
 em {
   border: solid black;

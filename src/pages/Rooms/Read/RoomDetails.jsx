@@ -47,6 +47,7 @@ export default function RoomDetails({ user }) {
         >
           <h1>{room.name}</h1>
           <h3>{room.direction_facing}</h3>
+          {room.direction_facing === "North" ? <p>This room receives low, indirect light throughout the day.</p> : room.direction_facing === "East" ? <p>This room gets gentle morning sunlight and soft, indirect light for the rest of the day.</p> : room.direction_facing === "South" ? <p>This room benefits from bright, direct sunlight for most of the day.</p> : <p>This room receives intense sunlight during the afternoon.</p>}
         </header>
         <section>
           {room.plants.map((plant) => {

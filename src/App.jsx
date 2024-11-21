@@ -46,7 +46,7 @@ export default function App() {
           <>
             <Route path="/" element={<Home user={user} rooms={rooms} setRooms={setRooms} wishlist={wishlist} setWishlist={setWishlist} />} />
             <Route path="/about" element={<About />} />
-            <Route path="/plants" element={<PlantIndex plants={plants} setPlants={setPlants} />} />
+            <Route path="/plants" element={<PlantIndex plants={plants} setPlants={setPlants} user={user} />} />
             <Route path="/plants/:plantId" element={<PlantDetails wishlist={wishlist} setWishlist={setWishlist} />} />
             <Route path="/rooms" element={<RoomIndex user={user} rooms={rooms} setRooms={setRooms} />} />
             <Route path="/rooms/:roomId" element={<RoomDetails user={user} plants={plants} />} />

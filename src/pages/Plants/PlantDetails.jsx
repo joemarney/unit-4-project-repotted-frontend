@@ -57,25 +57,27 @@ export default function PlantDetails({ wishlist, setWishlist }) {
         <h1>{plant.name}</h1>
       </header>
       <img src={plant.image} />
-      <h3>Scientific name</h3>
-      <p>{plant.scientific_name}</p>
-      <h3>Description</h3>
+      <h1>Scientific name</h1>
+      <span>
+        <p>{plant.scientific_name}</p>
+      </span>
+      <h1>Description</h1>
       <p>{plant.description}</p>
       <div className={styles.levels}>
         <div>
-          <h4>Sunlight</h4>
+          <h1>Sunlight</h1>
           <p>{plant.sunlight}</p>
         </div>
         <div>
-          <h4>Watering</h4>
+          <h1>Watering</h1>
           <p>{plant.watering}</p>
         </div>
         <div>
-          <h4>Difficulty</h4>
+          <h1>Difficulty</h1>
           <p>{plant.difficulty}</p>
         </div>
         <div>
-          <h4>Toxicity</h4>
+          <h1>Toxicity</h1>
           <p>{plant.toxicity}</p>
         </div>
       </div>

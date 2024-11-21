@@ -41,11 +41,11 @@ export default function Home({ user, rooms, setRooms, wishlist, setWishlist }) {
             <h1>Hey, {user.first_name}.</h1>
           </header>
           <div>
-            <h2>Your rooms</h2>
+            <h1>Your rooms</h1>
             <Carousel items={rooms} itemType="rooms" />
           </div>
           <div>
-            <h2>Wishlist</h2>
+            <h1>Wishlist</h1>
             <Carousel items={wishlist} itemType="plants" />
           </div>
         </>

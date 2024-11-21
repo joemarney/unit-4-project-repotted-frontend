@@ -4,8 +4,15 @@
   height: 100%;
   width: 100%;
 
+  header {
+    img {
+      max-height: 100px;
+    }
+  }
+
   img {
     align-self: center;
+    max-width: 100%;
   }
 
   h1 {

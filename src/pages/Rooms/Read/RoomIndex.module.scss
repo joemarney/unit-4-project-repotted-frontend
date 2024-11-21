@@ -3,7 +3,7 @@ header {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 10px;
+  padding: 30px;
 }
 
 .container {
@@ -17,31 +17,66 @@ header {
     gap: 20px;
   }
 
-  article {
+  .roomCard {
     width: 350px;
     height: 190px;
-    border: 2px solid #283618;
-    border-radius: 15px;
+    border-radius: 10px;
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 
-    p {
-      position: absolute;
-      //   backdrop-filter: blur(2px) saturate(100%);
-      //   border-radius: 15px 15px 0 0;
-      text-shadow: 0 0 0.3em white;
-      // color: #fefae0;
+    a {
+      display: block;
+      position: relative;
+      text-decoration: none;
+      color: inherit;
+      overflow: hidden;
+    }
+
+    div {
+      position: relative;
     }
 
     img {
-      height: 100%;
       width: 100%;
+      display: block;
+      transition: transform 0.3s ease;
     }
 
-    a {
-      overflow: hidden;
+    h1 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      transition: opacity 0.8s ease, visibility 0.8s ease;
+      z-index: 2;
+      visibility: hidden;
+    }
+
+    a:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(25, 34, 15, 0.5);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 1;
+    }
+
+    a:hover h1 {
+      opacity: 1;
+      visibility: visible;
+      color: #d2dab9;
+    }
+
+    a:hover:before {
+      opacity: 1;
     }
   }
 }

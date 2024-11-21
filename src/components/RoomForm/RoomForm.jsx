@@ -62,8 +62,8 @@ export default function RoomForm({ plants }) {
 
   return (
     <main className={styles.container}>
-      <h1>{roomId ? "Edit or add plants" : "Add a room"}</h1>
       <form onSubmit={handleSubmit}>
+        <h1>{roomId ? "Edit or add plants" : "Add a room"}</h1>
         <div>
           <label htmlFor="name">What would you like to call the room?</label>
           <br></br>
@@ -93,12 +93,16 @@ export default function RoomForm({ plants }) {
         </div>
 
         {roomId && (
-          <div id="checkbox-wrapper">
+          <div className={styles.checkboxWrapper}>
+            <label>Select the plants for this room:</label>
+            <br></br>
             {plants.map((plant) => {
               return (
                 <div key={plant.id}>
-                  <label htmlFor="plants">{plant.name}</label>
-                  <input type="checkbox" name="plants" value={plant.id} onChange={handleChange} checked={formData.plants.includes(plant.id)} />
+                  <label htmlFor={`plant-${plant.id}`} className={`${styles.checkboxLabel} ${formData.plants.includes(plant.id) ? styles.selected : ""}`}>
+                    {plant.name}
+                    <input type="checkbox" id={`plant-${plant.id}`} name="plants" value={plant.id} onChange={handleChange} checked={formData.plants.includes(plant.id)} className={styles.checkboxInput} />
+                  </label>
                 </div>
               );
             })}

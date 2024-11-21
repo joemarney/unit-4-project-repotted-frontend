@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { signin } from "../../services/user";
 
 import styles from "./SignIn.module.scss";
+import { getUser } from "../../utilities/auth";
 
 export default function SignIn({ setUser }) {
   const [formData, setFormData] = useState({
@@ -21,8 +22,8 @@ export default function SignIn({ setUser }) {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      const { user } = await signin(formData);
-      setUser(user);
+      await signin(formData);
+      setUser(getUser());
       navigate("/rooms");
     } catch (error) {
       console.log(error);

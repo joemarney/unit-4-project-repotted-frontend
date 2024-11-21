@@ -4,9 +4,7 @@
 
 html,
 body {
-  background-color: antiquewhite;
-  margin: 0;
-  padding: 0;
+  background-color: #d2dab9;
   margin-top: 35px;
   height: 100%;
 }
@@ -37,6 +35,8 @@ button {
   border: none;
   border-radius: 5px;
   margin: 5px 10px;
+  background-color: #19220f;
+  color: #d2dab9;
 }
 
 header {
@@ -44,7 +44,13 @@ header {
 }
 
 input:focus,
-button:focus {
+button:focus,
+select:focus {
   outline: none;
-  border: none;
 }
+
+// button:hover {
+//   background-color: #482f2d;
+//   color: #d2dab9;
+//   transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+// }
