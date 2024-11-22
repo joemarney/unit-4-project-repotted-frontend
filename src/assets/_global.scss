@@ -5,7 +5,7 @@
 html,
 body {
   background-color: #d2dab9;
-  margin-top: 35px;
+  margin: 35px 0px;
   height: 100%;
 }
 
@@ -21,7 +21,7 @@ h6 {
 }
 
 a {
-  color: black;
+  color: #19220f;
   text-decoration: none;
 }
 
@@ -39,10 +39,6 @@ button {
   color: #d2dab9;
 }
 
-header {
-  margin-top: 20px;
-}
-
 input:focus,
 button:focus,
 select:focus {
@@ -50,7 +46,8 @@ select:focus {
 }
 
 // button:hover {
-//   background-color: #482f2d;
-//   color: #d2dab9;
+//   background-color: #d2dab9;
+//   color: #19220f;
+//   outline: #19220f 2px solid;
 //   transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 // }

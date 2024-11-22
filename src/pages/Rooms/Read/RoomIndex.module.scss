@@ -4,12 +4,18 @@ header {
   align-items: center;
   flex-direction: column;
   padding: 30px;
+  button:hover {
+    background-color: #7e8e48;
+    color: #19220f;
+    transition: background-color 0.8s ease, color 0.8s ease;
+  }
 }
 
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 30px;
 
   section {
     display: grid;

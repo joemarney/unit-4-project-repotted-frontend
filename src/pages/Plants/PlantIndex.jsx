@@ -20,9 +20,9 @@ export default function PlantIndex({ plants, user }) {
 
     if (filters.toxicity === "safe") {
       if (user?.dependents === "pet" || user?.dependents === "both") {
-        newFilteredPlants = newFilteredPlants.filter((plant) => plant.toxicity !== "high");
+        newFilteredPlants = newFilteredPlants.filter((plant) => plant.toxicity === "low");
       } else if (user?.dependents === "child") {
-        newFilteredPlants = newFilteredPlants.filter((plant) => !["moderate", "high"].includes(plant.toxicity));
+        newFilteredPlants = newFilteredPlants.filter((plant) => plant.toxicity !== "high");
       }
     }
 
@@ -39,8 +39,10 @@ export default function PlantIndex({ plants, user }) {
       <header>
         <h1>Plants</h1>
       </header>
-      <div id="filters-container">
-        <button onClick={() => setFilters({ ...filters, toxicity: "all" })}>All</button>
+      <div className={styles.filtersContainer}>
+        <button autoFocus onClick={() => setFilters({ ...filters, toxicity: "all" })}>
+          All
+        </button>
         <button onClick={() => setFilters({ ...filters, toxicity: "safe" })}>Safe</button>
         <label>
           Light requirements:

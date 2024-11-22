@@ -10,6 +10,7 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 30px 0px;
 
   section {
     display: grid;
@@ -82,21 +83,26 @@ header {
     }
   }
 }
-button:hover {
-  background-color: #7e8e48;
-  transition: background-color 0.8s ease;
-}
 
-button:focus {
-  background-color: #7e8e48;
-  color: #19220f;
-}
+.filtersContainer {
+  margin: 0px 30px;
+  button:hover {
+    background-color: #7e8e48;
+    transition: background-color 0.8s ease, color 0.8s ease;
+    color: #19220f;
+  }
 
-select {
-  background-color: #7e8e48;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+  button:focus {
+    background-color: #7e8e48;
+    color: #19220f;
+  }
+
+  select {
+    background-color: #7e8e48;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
 }
 
 @media only screen and (min-width: 700px) {
