@@ -59,11 +59,11 @@ export default function Countdown({ plant }) {
   return (
     <main>
       <div>
-        <label>day</label>
+        <label>dd</label>
         <input value={days} onChange={changeDays} />
       </div>
       <div>
-        <label>hrs</label>
+        <label>hh</label>
         <input value={hours} onChange={changeHours} />
       </div>
       <div id="button-container">

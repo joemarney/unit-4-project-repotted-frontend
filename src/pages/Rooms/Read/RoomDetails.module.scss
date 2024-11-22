@@ -10,7 +10,7 @@
     background-size: cover;
     background-position: center;
     margin-bottom: 20px;
-    margin-top: 49px;
+    margin-top: 45px;
     padding: 5px;
     text-align: center;
     overflow: hidden;
@@ -52,11 +52,16 @@
         clip-path: circle();
       }
       div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
         label {
-          margin: 5px;
+          margin: 4px;
+          text-align: center;
         }
         input {
-          width: 30px;
+          max-width: 35px;
           clip-path: circle();
           border: none;
           text-align: center;
