@@ -20,7 +20,7 @@ export default function PlantIndex({ plants, user }) {
 
     if (filters.toxicity === "safe") {
       if (user?.dependents === "pet" || user?.dependents === "both") {
-        newFilteredPlants = newFilteredPlants.filter((plant) => plant.toxicity === "low");
+        newFilteredPlants = newFilteredPlants.filter((plant) => plant.toxicity === "low" || "none");
       } else if (user?.dependents === "child") {
         newFilteredPlants = newFilteredPlants.filter((plant) => plant.toxicity !== "high");
       }

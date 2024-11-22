@@ -52,7 +52,7 @@ export default function PlantDetails({ wishlist, setWishlist }) {
     <main className={styles.container}>
       <header>
         <button onClick={() => toggleLikes(plant)} disabled={processing}>
-          {processing ? "Working..." : wishlist.some((p) => p.plant_details.id === plant.id) ? "Remove" : "Add"}
+          {processing ? "Working..." : wishlist.some((p) => p.plant_details.id === plant.id) ? "Remove from wishlist" : "Add to wishlist"}
         </button>
         <h1>{plant.name}</h1>
       </header>
