@@ -18,9 +18,11 @@ export default function PlantIndex({ plants, user }) {
   useEffect(() => {
     let newFilteredPlants = [...plants];
 
+    console.log(user);
+
     if (filters.toxicity === "safe") {
       if (user?.dependents === "pet" || user?.dependents === "both") {
-        newFilteredPlants = newFilteredPlants.filter((plant) => plant.toxicity === "low" || "none");
+        newFilteredPlants = newFilteredPlants.filter((plant) => plant.toxicity === "low" || plant.toxicity === "none");
       } else if (user?.dependents === "child") {
         newFilteredPlants = newFilteredPlants.filter((plant) => plant.toxicity !== "high");
       }
