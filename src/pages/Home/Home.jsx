@@ -51,8 +51,10 @@ export default function Home({ user, rooms, setRooms, wishlist, setWishlist }) {
         </>
       ) : (
         <main className={styles.container}>
-          <h1>Hey, guest.</h1>
-          <h2>Please sign in or sign up!</h2>
+          <header>
+            <h1>Hey, guest.</h1>
+            <h2>Please sign in or sign up!</h2>
+          </header>
         </main>
       )}
     </main>
