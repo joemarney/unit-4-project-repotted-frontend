@@ -1,6 +1,6 @@
 # Project 4: Repotted
 
-![homescreen screenshot with 2 carousels showing the user's rooms and their wishlist of houseplants](/unit-4-project-repotted-frontend/public/images/repotted.png)
+![homescreen screenshot with 2 carousels showing the user's rooms and their wishlist of houseplants](/public/images/repotted.png)
 
 ## The Idea
 
